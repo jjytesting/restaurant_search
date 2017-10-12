@@ -49,12 +49,7 @@ def webhook():
     return r 
 
 def processRequest(req):
-    if req.get("result").get("action") == "SearchRestaurant": 
-        speech = "I want you to know this is working for SearchRestaurant"
-    elif req.get("result").get("action") == "location":
-        speech = "I want you to know this is working for location"
-    else:
-        return {}
+    return {}
     
     return {
         "speech": speech,
