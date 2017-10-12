@@ -34,7 +34,7 @@ app = Flask(__name__)
 
     
 @app.route('/webhook', methods=['POST'])
-def webhook(): #jj: what is this function for?
+def webhook(): 
     req = request.get_json(silent=True, force=True)
 
     print("Request:") 
@@ -66,11 +66,11 @@ def processRequest(req):
 def makeYqlQuery(req):
     result = req.get("result")
     parameters = result.get("parameters")
-    city = parameters.get("city")
+    city = parameters.get("location")
     if city is None:
         return None
 
-    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
+    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city[city] + "')"
 
 
 def makeWebhookResult(data):
