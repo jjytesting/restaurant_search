@@ -50,14 +50,6 @@ def webhook():
 
 def processRequest(req):
     return {}
-    
-    return {
-        "speech": speech,
-        "displayText": speech,
-        # "data": data,
-        # "contextOut": [],
-        "source": "restaurant-search-webhook-sample"
-    }
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000)) 
