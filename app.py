@@ -48,7 +48,23 @@ def webhook():
     r.headers['Content-Type'] = 'application/json'
     return r 
 
+def processRequest(req):
+    if req.get("result").get("action") == "SearchRestaurant": 
+        speech = "I want you to know this is working for SearchRestaurant"
+    elif req.get("result").get("action") == "location":
+        speech = "I want you to know this is working for location"
+    else:
+        return {}
+    
+    return {
+        "speech": speech,
+        "displayText": speech,
+        # "data": data,
+        # "contextOut": [],
+        "source": "apiai-weather-webhook-sample"
+    }
 
+'''
 def processRequest(req):
     if req.get("result").get("action") != "SearchRestaurant": 
         return {} 
@@ -114,7 +130,7 @@ def makeWebhookResult(data):
         # "contextOut": [],
         "source": "apiai-weather-webhook-sample"
     }
-
+'''
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000)) 
